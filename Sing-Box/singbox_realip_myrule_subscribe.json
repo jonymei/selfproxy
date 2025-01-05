@@ -51,7 +51,7 @@
       }
     ],
     "strategy": "ipv4_only",
-    "final": "local"
+    "final": "toquery"
   },
   "inbounds": [
     {
