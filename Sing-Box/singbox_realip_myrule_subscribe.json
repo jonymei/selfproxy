@@ -27,11 +27,6 @@
         "tag": "sytem",
         "address": "local",
         "detour": "direct-out"
-      },
-      {
-        "tag": "dhcp",
-        "address": "dhcp://auto",
-        "detour": "direct-out"
       }
     ],
     "rules": [
