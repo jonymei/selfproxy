@@ -7,51 +7,53 @@
   "dns": {
     "servers": [
       {
-        "tag": "remote",
-        "address": "https://8.8.8.8/dns-query",
-        "detour": "🚀 节点选择",
+        "tag": "dns_proxy",
+        "address": "https://1.0.0.1/dns-query",
         "strategy": "ipv4_only",
-        "client_subnet": "114.114.114.114/24"
+        "detour": "🚀 节点选择"
       },
       {
-        "tag": "query",
-        "address": "https://1.1.1.1/dns-query",
-        "address_resolver": "toquery",
-        "address_strategy": "ipv4_only",
-        "detour": "direct-out",
-        "strategy": "ipv4_only"
-      },
-      {
-        "tag": "toquery",
-        "address": "223.5.5.5",
+        "tag": "dns_direct",
+        "address": "https://120.53.53.53/dns-query",
+        "strategy": "ipv4_only",
         "detour": "direct-out"
       },
       {
-        "tag": "local",
+        "tag": "dns_resolver",
+        "address": "119.29.29.29",
+        "detour": "direct-out"
+      },
+      {
+        "tag": "sytem",
         "address": "local",
         "detour": "direct-out"
       },
       {
-        "address": "rcode://success",
-        "tag": "block"
+        "tag": "dhcp",
+        "address": "dhcp://auto",
+        "detour": "direct-out"
       }
     ],
     "rules": [
       {
         "outbound": "any",
-        "server": "query"
+        "server": "dns_resolver"
       },
       {
         "clash_mode": "direct",
-        "server": "local"
+        "server": "system"
       },
       {
         "clash_mode": "global",
-        "server": "remote"
+        "server": "dns_proxy"
+      },
+      {
+        "rule_set": "geosite-cn",
+        "server": "system"
       }
     ],
     "strategy": "ipv4_only",
-    "final": "toquery"
+    "final": "dns_proxy"
   },
   "inbounds": [
     {
