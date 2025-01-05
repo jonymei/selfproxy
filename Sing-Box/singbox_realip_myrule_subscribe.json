@@ -28,7 +28,7 @@
       },
       {
         "tag": "local",
-        "address": "dhcp://auto",
+        "address": "local",
         "detour": "direct-out"
       },
       {
