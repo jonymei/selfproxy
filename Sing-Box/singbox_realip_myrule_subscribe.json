@@ -42,7 +42,7 @@
       {
         "rule_set": "geosite-cn",
         "server": "dns_direct"
-      }, 
+      },
       {
         "type": "logical",
         "mode": "and",
@@ -67,9 +67,7 @@
       "tag": "tun-in",
       "type": "tun",
       "interface_name": "singbox",
-      "address": [
-        "172.19.0.1/30"
-      ],
+      "address": ["172.19.0.1/30"],
       "mtu": 9000,
       "stack": "system",
       "auto_route": true,
@@ -99,371 +97,256 @@
       "type": "block"
     },
     {
-      "tag": "proxy",
+      "tag": "🚀 节点选择",
       "type": "selector",
       "outbounds": [
-        "hk",
-        "tw",
-        "jp",
-        "sg",
-        "us",
-        "de",
-        "gb",
-        "kr",
-        "fr",
-        "nl",
-        "in",
-        "tr",
-        "others",
-        "all-auto",
+        "♻️ 自动选择",
+        "🕹 手动选择",
+        "🇭🇰 香港节点",
+        "🇹🇼 台湾节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇸🇬 狮城节点",
+        "🇺🇸 美国节点",
         "direct-out"
       ],
       "default": "all-auto"
     },
     {
-      "tag": "apple",
+      "tag": "🧠 人工智能",
       "type": "selector",
       "outbounds": [
-        "proxy",
-        "direct-out",
-        "hk",
-        "tw",
-        "jp",
-        "sg",
-        "us",
-        "de",
-        "gb",
-        "kr",
-        "fr",
-        "nl",
-        "in",
-        "tr",
-        "all",
-        "all-auto"
+        "🎯 全球直连",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🕹 手动选择",
+        "🇭🇰 香港节点",
+        "🇹🇼 台湾节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇸🇬 狮城节点",
+        "🇺🇸 美国节点"
       ],
+      "default": "🇸🇬 狮城节点"
+    },
+    {
+      "tag": "🌍 国外媒体",
+      "type": "selector",
+      "outbounds": [
+        "🎯 全球直连",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🕹 手动选择",
+        "🇭🇰 香港节点",
+        "🇹🇼 台湾节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇸🇬 狮城节点",
+        "🇺🇸 美国节点"
+      ],
+      "default": "🚀 节点选择"
+    },
+    {
+      "tag": "🌐 内容分发",
+      "type": "selector",
+      "outbounds": [
+        "🎯 全球直连",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🕹 手动选择",
+        "🇭🇰 香港节点",
+        "🇹🇼 台湾节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇸🇬 狮城节点",
+        "🇺🇸 美国节点"
+      ],
+      "default": "🚀 节点选择"
+    },
+    {
+      "tag": "🍎 苹果服务",
+      "type": "selector",
+      "outbounds": [
+        "🎯 全球直连",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🕹 手动选择",
+        "🇭🇰 香港节点",
+        "🇹🇼 台湾节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇸🇬 狮城节点",
+        "🇺🇸 美国节点"
+      ],
+      "default": "🚀 节点选择"
+    },
+    {
+      "tag": "🪟 微软服务",
+      "type": "selector",
+      "outbounds": [
+        "🎯 全球直连",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🕹 手动选择",
+        "🇭🇰 香港节点",
+        "🇹🇼 台湾节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇸🇬 狮城节点",
+        "🇺🇸 美国节点"
+      ],
+      "default": "🚀 节点选择"
+    },
+    {
+      "tag": "🎯 全球直连",
+      "type": "selector",
+      "outbounds": ["direct-out", "🚀 节点选择", "♻️ 自动选择", "🕹 手动选择"],
       "default": "direct-out"
     },
     {
-      "tag": "telegram",
+      "tag": "🛑 广告拦截",
       "type": "selector",
       "outbounds": [
-        "proxy",
+        "block",
         "direct-out",
-        "hk",
-        "tw",
-        "jp",
-        "sg",
-        "us",
-        "de",
-        "gb",
-        "kr",
-        "fr",
-        "nl",
-        "in",
-        "tr",
-        "all",
-        "all-auto"
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🕹 手动选择"
       ],
-      "default": "proxy"
+      "default": "block"
     },
     {
-      "tag": "bilibili",
+      "tag": "🐟 漏网之鱼",
       "type": "selector",
-      "outbounds": [
-        "proxy",
-        "direct-out",
-        "hk",
-        "tw",
-        "jp",
-        "sg",
-        "us",
-        "de",
-        "gb",
-        "kr",
-        "fr",
-        "nl",
-        "in",
-        "tr",
-        "all",
-        "all-auto"
-      ],
-      "default": "direct-out"
+      "outbounds": ["direct-out", "🚀 节点选择", "♻️ 自动选择", "🕹 手动选择"],
+      "default": "🚀 节点选择"
     },
     {
-      "tag": "microsoft",
+      "tag": "🇭🇰 香港节点",
       "type": "selector",
-      "outbounds": [
-        "proxy",
-        "direct-out",
-        "hk",
-        "tw",
-        "jp",
-        "sg",
-        "us",
-        "de",
-        "gb",
-        "kr",
-        "fr",
-        "nl",
-        "in",
-        "tr",
-        "all",
-        "all-auto"
-      ],
-      "default": "proxy"
-    },
-    {
-      "tag": "neteasemusic",
-      "type": "selector",
-      "outbounds": [
-        "proxy",
-        "direct-out",
-        "hk",
-        "tw",
-        "jp",
-        "sg",
-        "us",
-        "de",
-        "gb",
-        "kr",
-        "fr",
-        "nl",
-        "in",
-        "tr",
-        "all",
-        "all-auto"
-      ],
-      "default": "direct-out"
-    },
-    {
-      "tag": "stream",
-      "type": "selector",
-      "outbounds": [
-        "proxy",
-        "direct-out",
-        "hk",
-        "tw",
-        "jp",
-        "sg",
-        "us",
-        "de",
-        "gb",
-        "kr",
-        "fr",
-        "nl",
-        "in",
-        "tr",
-        "all",
-        "all-auto"
-      ],
-      "default": "proxy"
-    },
-    {
-      "tag": "openai",
-      "type": "selector",
-      "outbounds": [
-        "proxy",
-        "direct-out",
-        "hk",
-        "tw",
-        "jp",
-        "sg",
-        "us",
-        "de",
-        "gb",
-        "kr",
-        "fr",
-        "nl",
-        "in",
-        "tr",
-        "all",
-        "all-auto"
-      ],
-      "default": "us"
-    },
-    {
-      "tag": "final",
-      "type": "selector",
-      "outbounds": [
-        "proxy",
-        "direct-out",
-        "hk",
-        "tw",
-        "jp",
-        "sg",
-        "us",
-        "de",
-        "gb",
-        "kr",
-        "fr",
-        "nl",
-        "in",
-        "tr",
-        "all",
-        "all-auto"
-      ],
-      "default": "proxy"
-    },
-    {
-      "tag": "hk",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
+      "outbounds": ["{all}"],
       "filter": [
-        {"action":"include","keywords":["🇭🇰|HK|hk|香港|港|HongKong"]},
-        {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"]}
+        { "action": "include", "keywords": ["🇭🇰|HK|hk|香港|港|HongKong"] },
+        {
+          "action": "exclude",
+          "keywords": [
+            "网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"
+          ]
+        }
       ]
     },
     {
-      "tag": "tw",
+      "tag": "🇹🇼 台湾节点",
       "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
+      "outbounds": ["{all}"],
       "filter": [
-        {"action":"include","keywords":["🇹🇼|TW|tw|台湾|臺灣|台|Taiwan"]},
-        {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"]}
+        { "action": "include", "keywords": ["🇹🇼|TW|tw|台湾|臺灣|台|Taiwan"] },
+        {
+          "action": "exclude",
+          "keywords": [
+            "网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"
+          ]
+        }
       ]
     },
     {
-      "tag": "jp",
+      "tag": "🇯🇵 日本节点",
       "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
+      "outbounds": ["{all}"],
       "filter": [
-        {"action":"include","keywords":["🇯🇵|JP|jp|日本|日|Japan"]},
-        {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"]}
+        { "action": "include", "keywords": ["🇯🇵|JP|jp|日本|日|Japan"] },
+        {
+          "action": "exclude",
+          "keywords": [
+            "网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"
+          ]
+        }
       ]
     },
     {
-      "tag": "sg",
+      "tag": "🇰🇷 韩国节点",
       "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
+      "outbounds": ["{all}"],
       "filter": [
-        {"action":"include","keywords":["🇸🇬|SG|sg|新加坡|狮|Singapore"]},
-        {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"]}
+        { "action": "include", "keywords": ["🇰🇷|KR|kr|韩国|韩|South Korea"] },
+        {
+          "action": "exclude",
+          "keywords": [
+            "网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"
+          ]
+        }
       ]
     },
     {
-      "tag": "us",
+      "tag": "🇸🇬 狮城节点",
       "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
+      "outbounds": ["{all}"],
       "filter": [
-        {"action":"include","keywords":["🇺🇸|US|us|美国|美|United States"]},
-        {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"]}
+        { "action": "include", "keywords": ["🇸🇬|SG|sg|新加坡|狮|Singapore"] },
+        {
+          "action": "exclude",
+          "keywords": [
+            "网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"
+          ]
+        }
       ]
     },
     {
-      "tag": "de",
+      "tag": "🇺🇸 美国节点",
       "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
+      "outbounds": ["{all}"],
       "filter": [
-        {"action":"include","keywords":["🇩🇪|DE|de|德国|德|Germany"]},
-        {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"]}
+        { "action": "include", "keywords": ["🇺🇸|US|us|美国|美|United States"] },
+        {
+          "action": "exclude",
+          "keywords": [
+            "网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"
+          ]
+        }
       ]
     },
     {
-      "tag": "gb",
+      "tag": "🇪🇺 其他节点",
       "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
+      "outbounds": ["{all}"],
       "filter": [
-        {"action":"include","keywords":["🇬🇧|GB|gb|英国|英|United Kingdom"]},
-        {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"]}
+        {
+          "action": "exclude",
+          "keywords": [
+            "🇭🇰|HK|hk|香港|港|HongKong",
+            "🇹🇼|TW|tw|台湾|臺灣|台|Taiwan",
+            "🇯🇵|JP|jp|日本|日|Japan",
+            "🇰🇷|KR|kr|韩国|韩|South Korea",
+            "🇸🇬|SG|sg|新加坡|狮|Singapore",
+            "🇺🇸|US|us|美国|美|United States"
+          ]
+        }
       ]
     },
     {
-      "tag": "kr",
+      "tag": "🕹 手动选择",
       "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
+      "outbounds": ["{all}"],
       "filter": [
-        {"action":"include","keywords":["🇰🇷|KR|kr|韩国|韩|South Korea"]},
-        {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"]}
+        {
+          "action": "exclude",
+          "keywords": [
+            "网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"
+          ]
+        }
       ]
     },
     {
-      "tag": "fr",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {"action":"include","keywords":["🇫🇷|FR|fr|法国|法|France"]},
-        {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"]}
-      ]
-    },
-    {
-      "tag": "nl",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {"action":"include","keywords":["🇳🇱|NL|nl|荷兰|荷|Netherlands"]},
-        {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"]}
-      ]
-    },
-    {
-      "tag": "in",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {"action":"include","keywords":["🇮🇳|IN|in|印度|印|India"]},
-        {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"]}
-      ]
-    },
-    {
-      "tag": "tr",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {"action":"include","keywords":["🇹🇷|TR|tr|土耳其|土|Turkey"]},
-        {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"]}
-      ]
-    },
-    {
-      "tag": "others",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {"action":"exclude","keywords":["🇭🇰|HK|hk|香港|港|HongKong", "🇹🇼|TW|tw|台湾|臺灣|台|Taiwan", "🇯🇵|JP|jp|日本|日|Japan", "🇸🇬|SG|sg|新加坡|狮|Singapore", "🇺🇸|US|us|美国|美|United States", "🇩🇪|DE|de|德国|德|Germany", "🇬🇧|GB|gb|英国|英|United Kingdom", "🇰🇷|KR|kr|韩国|韩|South Korea", "🇫🇷|FR|fr|法国|法|France", "🇳🇱|NL|nl|荷兰|荷|Netherlands", "🇮🇳|IN|in|印度|印|India", "🇹🇷|TR|tr|土耳其|土|Turkey"]}
-      ]
-    },
-    {
-      "tag": "all",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"]}
-      ]
-    },
-    {
-      "tag": "all-auto",
+      "tag": "♻️ 自动选择",
       "type": "urltest",
-      "outbounds": [
-        "{all}"
-      ],
+      "outbounds": ["{all}"],
       "filter": [
-        {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"]}
+        {
+          "action": "exclude",
+          "keywords": [
+            "网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"
+          ]
+        }
       ],
       "url": "https://www.gstatic.com/generate_204",
       "interval": "1m",
@@ -474,21 +357,16 @@
       "type": "selector",
       "outbounds": [
         "direct-out",
-        "proxy",
-        "hk",
-        "tw",
-        "jp",
-        "sg",
-        "us",
-        "de",
-        "gb",
-        "kr",
-        "fr",
-        "nl",
-        "in",
-        "tr",
-        "all",
-        "all-auto"
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🕹 手动选择",
+        "🇭🇰 香港节点",
+        "🇹🇼 台湾节点",
+        "🇯🇵 日本节点",
+        "🇸🇬 狮城节点",
+        "🇰🇷 韩国节点",
+        "🇺🇸 美国节点",
+        "🇪🇺 其他节点"
       ],
       "default": "direct-out"
     }
@@ -522,145 +400,74 @@
           "reject_non_ip_no_drop",
           "reject_domainset"
         ],
-        "outbound": "block"
+        "outbound": "🛑 广告拦截"
       },
       {
-        "rule_set": [
-          "reject_ip"
-        ],
-        "outbound": "block"
+        "rule_set": ["reject_ip"],
+        "outbound": "🛑 广告拦截"
       },
       {
-        "rule_set": [
-          "my_direct"
-        ],
+        "rule_set": ["ai_non_ip"],
+        "outbound": "🧠 人工智能"
+      },
+      {
+        "rule_set": ["stream_non_ip"],
+        "outbound": "🌍 国外媒体"
+      },
+      {
+        "rule_set": ["microsoft_cdn_non_ip"],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "rule_set": ["microsoft_non_ip"],
+        "outbound": "🪟 微软服务"
+      },
+      {
+        "rule_set": ["apple_cdn", "apple_cn_non_ip"],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "rule_set": ["apple_services"],
+        "outbound": "🍎 苹果服务"
+      },
+      {
+        "rule_set": ["cdn_domainset", "cdn_non_ip"],
+        "outbound": "🌐 内容分发"
+      },
+      {
+        "rule_set": ["download_domainset", "download_non_ip"],
+        "outbound": "🌐 内容分发"
+      },
+      {
+        "rule_set": ["lan_non_ip"],
         "outbound": "direct-out"
       },
       {
-        "rule_set": [
-          "cdn_domainset",
-          "cdn_non_ip"
-        ],
-        "outbound": "proxy"
+        "rule_set": ["domestic_non_ip", "direct_non_ip"],
+        "outbound": "🎯 全球直连"
       },
       {
-        "rule_set": [
-          "stream_non_ip"
-        ],
-        "outbound": "stream"
+        "rule_set": ["global_non_ip"],
+        "outbound": "🚀 节点选择"
       },
       {
-        "rule_set": [
-          "ai_non_ip"
-        ],
-        "outbound": "openai"
+        "rule_set": ["stream_ip"],
+        "outbound": "🌍 国外媒体"
       },
       {
-        "rule_set": [
-          "telegram_non_ip"
-        ],
-        "outbound": "telegram"
-      },
-      {
-        "rule_set": [
-          "apple_cdn",
-          "apple_cn_non_ip"
-        ],
+        "rule_set": ["lan_ip"],
         "outbound": "direct-out"
       },
       {
-        "rule_set": [
-          "microsoft_cdn_non_ip"
-        ],
-        "outbound": "direct-out"
+        "rule_set": ["domestic_ip", "china_ip"],
+        "outbound": "🎯 全球直连"
       },
       {
-        "rule_set": [
-          "download_domainset",
-          "download_non_ip"
-        ],
-        "outbound": "proxy"
-      },
-      {
-        "rule_set": [
-          "apple_services"
-        ],
-        "outbound": "apple"
-      },
-      {
-        "rule_set": [
-          "microsoft_non_ip"
-        ],
-        "outbound": "microsoft"
-      },
-      {
-        "rule_set": [
-          "global_non_ip"
-        ],
-        "outbound": "proxy"
-      },
-      {
-        "rule_set": [
-          "neteasemusic_non_ip"
-        ],
-        "outbound": "neteasemusic"
-      },
-      {
-        "rule_set": [
-          "global_non_ip"
-        ],
-        "outbound": "proxy"
-      },
-      {
-        "rule_set": [
-          "domestic_non_ip",
-          "lan_non_ip",
-          "direct_non_ip"
-        ],
-        "outbound": "direct-out"
-      },
-      {
-        "rule_set": [
-          "telegram_ip"
-        ],
-        "outbound": "telegram"
-      },
-      {
-        "rule_set": [
-          "stream_ip"
-        ],
-        "outbound": "stream"
-      },
-      {
-        "rule_set": [
-          "neteasemusic_ip"
-        ],
-        "outbound": "neteasemusic"
-      },
-      {
-        "rule_set": [
-          "lan_ip",
-          "domestic_ip",
-          "china_ip"
-        ],
-        "outbound": "direct-out"
-      },
-      {
-        "rule_set": [
-          "geosite-cn",
-          "geoip-cn"
-        ],
-        "outbound": "direct-out"
+        "rule_set": ["geosite-cn", "geoip-cn"],
+        "outbound": "🎯 全球直连"
       }
     ],
     "rule_set": [
-      {
-        "tag": "my_direct",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/myself/my_direct.srs",
-        "download_detour": "proxy"
-      },
       {
         "tag": "reject_non_ip_no_drop",
         "type": "remote",
@@ -669,11 +476,11 @@
         "download_detour": "proxy"
       },
       {
-      "tag": "reject_non_ip_drop",
-      "type": "remote",
-      "format": "binary",
-      "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/reject-drop.srs",
-      "download_detour": "proxy"
+        "tag": "reject_non_ip_drop",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/reject-drop.srs",
+        "download_detour": "proxy"
       },
       {
         "tag": "reject_non_ip",
@@ -732,20 +539,6 @@
         "download_detour": "proxy"
       },
       {
-        "tag": "telegram_non_ip",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/telegram.srs",
-        "download_detour": "proxy"
-      },
-      {
-        "tag": "telegram_ip",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/ip/telegram.srs",
-        "download_detour": "proxy"
-      },
-      {
         "tag": "apple_cdn",
         "type": "remote",
         "format": "binary",
@@ -778,20 +571,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/microsoft.srs",
-        "download_detour": "proxy"
-      },
-      {
-        "tag": "neteasemusic_non_ip",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/neteasemusic.srs",
-        "download_detour": "proxy"
-      },
-      {
-        "tag": "neteasemusic_ip",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/ip/neteasemusic.srs",
         "download_detour": "proxy"
       },
       {
@@ -903,8 +682,8 @@
     },
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
-      "external_ui": "ui", 
-      "external_ui_download_url": "https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip", 
+      "external_ui": "ui",
+      "external_ui_download_url": "https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
       "external_ui_download_detour": "proxy",
       "default_mode": "rule"
     }
