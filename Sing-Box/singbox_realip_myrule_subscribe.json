@@ -7,60 +7,51 @@
   "dns": {
     "servers": [
       {
-        "tag": "dns_proxy",
-        "address": "https://1.0.0.1/dns-query",
-        "address_resolver": "dns_resolver",
+        "tag": "remote",
+        "address": "https://8.8.8.8/dns-query",
+        "detour": "🚀 节点选择",
         "strategy": "ipv4_only",
-        "detour": "🚀 节点选择"
+        "client_subnet": "114.114.114.114/24"
       },
       {
-        "tag": "dns_direct",
-        "address": "https://120.53.53.53/dns-query",
-        "address_resolver": "dns_resolver",
-        "strategy": "ipv4_only",
+        "tag": "query",
+        "address": "https://1.1.1.1/dns-query",
+        "address_resolver": "toquery",
+        "address_strategy": "ipv4_only",
+        "detour": "direct-out",
+        "strategy": "ipv4_only"
+      },
+      {
+        "tag": "toquery",
+        "address": "223.5.5.5",
         "detour": "direct-out"
       },
       {
-        "tag": "dns_resolver",
-        "address": "119.29.29.29",
+        "tag": "local",
+        "address": "dhcp://auto",
         "detour": "direct-out"
+      },
+      {
+        "address": "rcode://success",
+        "tag": "block"
       }
     ],
     "rules": [
       {
         "outbound": "any",
-        "server": "dns_resolver"
+        "server": "query"
       },
       {
         "clash_mode": "direct",
-        "server": "dns_direct"
+        "server": "local"
       },
       {
         "clash_mode": "global",
-        "server": "dns_proxy"
-      },
-      {
-        "rule_set": "geosite-cn",
-        "server": "dns_direct"
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "rule_set": "geolocation-!cn",
-            "invert": true
-          },
-          {
-            "rule_set": "geoip-cn"
-          }
-        ],
-        "server": "dns_proxy",
-        "client_subnet": "114.114.114.114/24"
+        "server": "remote"
       }
     ],
     "strategy": "ipv4_only",
-    "final": "dns_proxy"
+    "final": "local"
   },
   "inbounds": [
     {
