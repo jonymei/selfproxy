@@ -51,6 +51,10 @@
         "server": "dns_block"
       },
       {
+        "rule_set": "geosite-apple@cn",
+        "server": "dns_system"
+      },
+      {
         "rule_set": "geosite-cn",
         "server": "dns_system"
       },
@@ -398,6 +402,11 @@
       {
         "clash_mode": "global",
         "outbound": "GLOBAL"
+      },
+      {
+        "protocol": "udp",
+        "port": 443,
+        "outbound": "block"
       },
       { "rule_set": "geosite-category-ads-all", "outbound": "🛑 广告拦截" },
       {
