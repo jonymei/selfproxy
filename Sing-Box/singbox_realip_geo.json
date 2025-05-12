@@ -439,190 +439,281 @@
         "outbound": "GLOBAL"
       },
       {
-        "protocol": "udp",
-        "port": 443,
-        "outbound": "block"
-      },
-      { "rule_set": "geosite-category-ads-all", "outbound": "🛑 广告拦截" },
-      {
-        "domain": [
-          "clash.razord.top",
-          "yacd.metacubex.one",
-          "yacd.haishan.me",
-          "d.metacubex.one"
-        ],
-        "outbound": "direct-out"
-      },
-      { "ip_is_private": true, "outbound": "direct-out" },
-      { "rule_set": "geosite-openai", "outbound": "🧠 人工智能" },
-      {
-        "rule_set": ["geosite-apple@cn"],
-        "outbound": "🎯 全球直连"
-      },
-      {
-        "rule_set": ["geosite-apple"],
-        "outbound": "🍎 苹果服务"
-      },
-      {
-        "rule_set": ["geosite-microsoft"],
-        "outbound": "Ⓜ️ 微软服务"
-      },
-      {
         "rule_set": [
-          "geosite-youtube",
-          "geosite-google",
-          "geosite-github",
-          "geosite-telegram",
-          "geosite-twitter"
+          "reject_non_ip",
+          "reject_non_ip_no_drop",
+          "reject_domainset"
         ],
+        "outbound": "🛑 广告拦截"
+      },
+      {
+        "rule_set": ["reject_ip"],
+        "outbound": "🛑 广告拦截"
+      },
+      {
+        "rule_set": ["ai_non_ip"],
+        "outbound": "🧠 人工智能"
+      },
+      {
+        "rule_set": ["stream_non_ip"],
         "outbound": "✈️ 常用服务"
       },
       {
-        "rule_set": ["geosite-amazon"],
+        "rule_set": ["microsoft_cdn_non_ip"],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "rule_set": ["microsoft_non_ip"],
+        "outbound": "Ⓜ️ 微软服务"
+      },
+      {
+        "rule_set": ["apple_cdn", "apple_cn_non_ip"],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "rule_set": ["apple_services"],
+        "outbound": "🍎 苹果服务"
+      },
+      {
+        "rule_set": ["cdn_domainset", "cdn_non_ip"],
         "outbound": "🌐 内容分发"
       },
       {
-        "rule_set": "geosite-geolocation-!cn",
+        "rule_set": ["download_domainset", "download_non_ip"],
+        "outbound": "🌐 内容分发"
+      },
+      {
+        "rule_set": ["lan_non_ip"],
+        "outbound": "direct-out"
+      },
+      {
+        "rule_set": ["domestic_non_ip", "direct_non_ip"],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "rule_set": ["global_non_ip"],
         "outbound": "🚀 节点选择"
       },
       {
-        "rule_set": ["geoip-cn", "geosite-cn"],
+        "rule_set": ["stream_ip"],
+        "outbound": "✈️ 常用服务"
+      },
+      {
+        "rule_set": ["lan_ip"],
+        "outbound": "direct-out"
+      },
+      {
+        "rule_set": ["domestic_ip", "china_ip"],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "rule_set": ["geosite-cn", "geoip-cn"],
         "outbound": "🎯 全球直连"
       }
     ],
     "rule_set": [
       {
-        "tag": "geosite-category-ads-all",
+        "tag": "reject_non_ip_no_drop",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/reject-no-drop.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
-        "tag": "geosite-openai",
-        "type": "remote",
-        "format": "source",
-        "url": "https://testingcf.jsdelivr.net/gh/Toperlock/sing-box-geosite@main/rule/OpenAI.json",
-        "download_detour": "direct-out"
-      },
-      {
-        "tag": "geosite-category-ai-chat-!cn.list",
+        "tag": "reject_non_ip_drop",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ai-chat-!cn.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/reject-drop.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
-        "tag": "geosite-apple@cn",
+        "tag": "reject_non_ip",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/apple@cn.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/reject.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
-        "tag": "geoip-apple",
+        "tag": "reject_domainset",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geoip/apple.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/domainset/reject.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
-        "tag": "geosite-apple",
+        "tag": "reject_ip",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/apple.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/ip/reject.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
-        "tag": "geosite-microsoft",
+        "tag": "cdn_domainset",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/domainset/cdn.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
-        "tag": "geosite-youtube",
+        "tag": "cdn_non_ip",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/cdn.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
-        "tag": "geoip-google",
+        "tag": "stream_non_ip",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/google.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/stream.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
-        "tag": "geosite-google",
+        "tag": "stream_ip",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/ip/stream.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
-        "tag": "geosite-github",
+        "tag": "ai_non_ip",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/ai.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
-        "tag": "geoip-telegram",
+        "tag": "apple_cdn",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/domainset/apple_cdn.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
-        "tag": "geosite-telegram",
+        "tag": "apple_services",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/apple_services.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
-        "tag": "geoip-twitter",
+        "tag": "apple_cn_non_ip",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/twitter.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/apple_cn.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
-        "tag": "geosite-twitter",
+        "tag": "microsoft_cdn_non_ip",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/twitter.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/microsoft_cdn.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
-        "tag": "geosite-amazon",
+        "tag": "microsoft_non_ip",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/amazon.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/microsoft.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
-        "tag": "geosite-geolocation-!cn",
+        "tag": "download_domainset",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/domainset/download.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "download_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/download.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "lan_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/lan.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "lan_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/ip/lan.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "domestic_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/domestic.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "direct_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/direct.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "global_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/global.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "domestic_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/ip/domestic.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "china_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/ip/china_ip.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "geoip-bilibili",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo-lite/geoip/bilibili.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "geosite-bilibili",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/bilibili.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "geolocation-!cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/geolocation-!cn.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
         "tag": "geoip-cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geoip/cn.srs",
+        "download_detour": "🚀 节点选择"
       },
       {
         "tag": "geosite-cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
-        "download_detour": "direct-out"
+        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/cn.srs",
+        "download_detour": "🚀 节点选择"
       }
     ],
     "auto_detect_interface": true,
