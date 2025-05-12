@@ -1,0 +1,735 @@
+{
+  "log": {
+    "disabled": false,
+    "level": "info",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns_proxy",
+        "address": "https://1.0.0.1/dns-query",
+        "strategy": "ipv4_only",
+        "detour": "🚀 节点选择"
+      },
+      {
+        "tag": "dns_direct",
+        "address": "https://120.53.53.53/dns-query",
+        "strategy": "ipv4_only",
+        "detour": "direct-out"
+      },
+      {
+        "tag": "dns_resolver",
+        "address": "119.29.29.29",
+        "detour": "direct-out"
+      },
+      {
+        "tag": "dns_system",
+        "address": "local",
+        "detour": "direct-out"
+      },
+      {
+        "tag": "dns_block",
+        "address": "rcode://success"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": "any",
+        "server": "dns_resolver"
+      },
+      {
+        "clash_mode": "direct",
+        "server": "dns_system"
+      },
+      {
+        "clash_mode": "global",
+        "server": "dns_proxy"
+      },
+      {
+        "rule_set": "geosite-category-ads-all",
+        "server": "dns_block"
+      },
+      {
+        "rule_set": "geosite-apple@cn",
+        "server": "dns_system"
+      },
+      {
+        "rule_set": "geosite-cn",
+        "server": "dns_system"
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "server": "dns_proxy"
+      }
+    ],
+    "strategy": "ipv4_only",
+    "final": "dns_proxy"
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "address": ["172.19.0.1/30", "fdfe:dcba:9876::1/126"],
+      "mtu": 9000,
+      "auto_route": true,
+      "strict_route": true,
+      "sniff": true,
+      "endpoint_independent_nat": false,
+      "stack": "system",
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 2080
+        }
+      }
+    },
+    {
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 2080,
+      "sniff": true,
+      "users": []
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "direct-out",
+      "type": "direct"
+    },
+    {
+      "tag": "dns-out",
+      "type": "dns"
+    },
+    {
+      "tag": "block",
+      "type": "block"
+    },
+    {
+      "tag": "🚀 节点选择",
+      "type": "selector",
+      "outbounds": [
+        "♻️ 自动选择",
+        "🕹 手动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇸🇬 狮城节点",
+        "🇺🇸 美国节点",
+        "🇪🇺 其他节点",
+        "🍓 自定义1",
+        "🍉 自定义2",
+        "direct-out"
+      ],
+      "default": "♻️ 自动选择"
+    },
+    {
+      "tag": "🧠 人工智能",
+      "type": "selector",
+      "outbounds": [
+        "🎯 全球直连",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🕹 手动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇸🇬 狮城节点",
+        "🇺🇸 美国节点",
+        "🇪🇺 其他节点",
+        "🍓 自定义1",
+        "🍉 自定义2"
+      ],
+      "default": "🇸🇬 狮城节点"
+    },
+    {
+      "tag": "✈️ 常用服务",
+      "type": "selector",
+      "outbounds": [
+        "🎯 全球直连",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🕹 手动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇸🇬 狮城节点",
+        "🇺🇸 美国节点",
+        "🇪🇺 其他节点",
+        "🍓 自定义1",
+        "🍉 自定义2"
+      ],
+      "default": "🚀 节点选择"
+    },
+    {
+      "tag": "🌐 内容分发",
+      "type": "selector",
+      "outbounds": [
+        "🎯 全球直连",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🕹 手动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇸🇬 狮城节点",
+        "🇺🇸 美国节点",
+        "🇪🇺 其他节点",
+        "🍓 自定义1",
+        "🍉 自定义2"
+      ],
+      "default": "🚀 节点选择"
+    },
+    {
+      "tag": "🍎 苹果服务",
+      "type": "selector",
+      "outbounds": [
+        "🎯 全球直连",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🕹 手动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇸🇬 狮城节点",
+        "🇺🇸 美国节点",
+        "🇪🇺 其他节点",
+        "🍓 自定义1",
+        "🍉 自定义2"
+      ],
+      "default": "🚀 节点选择"
+    },
+    {
+      "tag": "Ⓜ️ 微软服务",
+      "type": "selector",
+      "outbounds": [
+        "🎯 全球直连",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🕹 手动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇯🇵 日本节点",
+        "🇰🇷 韩国节点",
+        "🇸🇬 狮城节点",
+        "🇺🇸 美国节点",
+        "🇪🇺 其他节点",
+        "🍓 自定义1",
+        "🍉 自定义2"
+      ],
+      "default": "🚀 节点选择"
+    },
+    {
+      "tag": "🎯 全球直连",
+      "type": "selector",
+      "outbounds": ["direct-out", "🚀 节点选择", "♻️ 自动选择", "🕹 手动选择"],
+      "default": "direct-out"
+    },
+    {
+      "tag": "🛑 广告拦截",
+      "type": "selector",
+      "outbounds": [
+        "block",
+        "direct-out",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🕹 手动选择"
+      ],
+      "default": "block"
+    },
+    {
+      "tag": "🐟 漏网之鱼",
+      "type": "selector",
+      "outbounds": ["direct-out", "🚀 节点选择", "♻️ 自动选择", "🕹 手动选择"],
+      "default": "🚀 节点选择"
+    },
+    {
+      "tag": "🇭🇰 香港节点",
+      "type": "urltest",
+      "outbounds": ["{all}"],
+      "filter": [
+        { "action": "include", "keywords": ["🇭🇰|HK|hk|香港|港|HongKong"] }
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "1m",
+      "tolerance": 50
+    },
+    {
+      "tag": "🇨🇳 台湾节点",
+      "type": "urltest",
+      "outbounds": ["{all}"],
+      "filter": [
+        { "action": "include", "keywords": ["🇹🇼|TW|tw|台湾|臺灣|台|Taiwan"] }
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "1m",
+      "tolerance": 50
+    },
+    {
+      "tag": "🇯🇵 日本节点",
+      "type": "urltest",
+      "outbounds": ["{all}"],
+      "filter": [
+        { "action": "include", "keywords": ["🇯🇵|JP|jp|日本|日|Japan"] }
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "1m",
+      "tolerance": 50
+    },
+    {
+      "tag": "🇰🇷 韩国节点",
+      "type": "urltest",
+      "outbounds": ["{all}"],
+      "filter": [
+        { "action": "include", "keywords": ["🇰🇷|KR|kr|韩国|韩|South Korea"] }
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "1m",
+      "tolerance": 50
+    },
+    {
+      "tag": "🇸🇬 狮城节点",
+      "type": "urltest",
+      "outbounds": ["{all}"],
+      "filter": [
+        { "action": "include", "keywords": ["🇸🇬|SG|sg|新加坡|狮|Singapore"] }
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "1m",
+      "tolerance": 50
+    },
+    {
+      "tag": "🇺🇸 美国节点",
+      "type": "urltest",
+      "outbounds": ["{all}"],
+      "filter": [
+        { "action": "include", "keywords": ["🇺🇸|US|us|美国|美|United States"] }
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "1m",
+      "tolerance": 50
+    },
+    {
+      "tag": "🇪🇺 其他节点",
+      "type": "urltest",
+      "outbounds": ["{all}"],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "🇭🇰|HK|hk|香港|港|HongKong",
+            "🇹🇼|TW|tw|台湾|臺灣|台|Taiwan",
+            "🇯🇵|JP|jp|日本|日|Japan",
+            "🇰🇷|KR|kr|韩国|韩|South Korea",
+            "🇸🇬|SG|sg|新加坡|狮|Singapore",
+            "🇺🇸|US|us|美国|美|United States"
+          ]
+        },
+        {
+          "action": "exclude",
+          "keywords": [
+            "网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"
+          ]
+        }
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "1m",
+      "tolerance": 50
+    },
+    {
+      "tag": "🕹 手动选择",
+      "type": "selector",
+      "outbounds": ["{all}"],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "♻️ 自动选择",
+      "type": "urltest",
+      "outbounds": ["{all}"],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"
+          ]
+        }
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "1m",
+      "tolerance": 50
+    },
+    {
+      "tag": "🍓 自定义1",
+      "type": "selector",
+      "outbounds": ["{all}"],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "🍉 自定义2",
+      "type": "selector",
+      "outbounds": ["{all}"],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "GLOBAL",
+      "type": "selector",
+      "outbounds": [
+        "direct-out",
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🕹 手动选择",
+        "🇭🇰 香港节点",
+        "🇨🇳 台湾节点",
+        "🇯🇵 日本节点",
+        "🇸🇬 狮城节点",
+        "🇰🇷 韩国节点",
+        "🇺🇸 美国节点",
+        "🇪🇺 其他节点"
+      ],
+      "default": "direct-out"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "protocol": "dns"
+          },
+          {
+            "port": 53
+          }
+        ],
+        "outbound": "dns-out"
+      },
+      {
+        "clash_mode": "direct",
+        "outbound": "direct-out"
+      },
+      {
+        "clash_mode": "global",
+        "outbound": "GLOBAL"
+      },
+      {
+        "rule_set": [
+          "reject_non_ip",
+          "reject_non_ip_no_drop",
+          "reject_domainset"
+        ],
+        "outbound": "🛑 广告拦截"
+      },
+      {
+        "rule_set": ["reject_ip"],
+        "outbound": "🛑 广告拦截"
+      },
+      {
+        "rule_set": ["ai_non_ip"],
+        "outbound": "🧠 人工智能"
+      },
+      {
+        "rule_set": ["stream_non_ip"],
+        "outbound": "✈️ 常用服务"
+      },
+      {
+        "rule_set": ["microsoft_cdn_non_ip"],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "rule_set": ["microsoft_non_ip"],
+        "outbound": "Ⓜ️ 微软服务"
+      },
+      {
+        "rule_set": ["apple_cdn", "apple_cn_non_ip"],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "rule_set": ["apple_services"],
+        "outbound": "🍎 苹果服务"
+      },
+      {
+        "rule_set": ["cdn_domainset", "cdn_non_ip"],
+        "outbound": "🌐 内容分发"
+      },
+      {
+        "rule_set": ["download_domainset", "download_non_ip"],
+        "outbound": "🌐 内容分发"
+      },
+      {
+        "rule_set": ["lan_non_ip"],
+        "outbound": "direct-out"
+      },
+      {
+        "rule_set": ["domestic_non_ip", "direct_non_ip"],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "rule_set": ["global_non_ip"],
+        "outbound": "🚀 节点选择"
+      },
+      {
+        "rule_set": ["stream_ip"],
+        "outbound": "✈️ 常用服务"
+      },
+      {
+        "rule_set": ["lan_ip"],
+        "outbound": "direct-out"
+      },
+      {
+        "rule_set": ["domestic_ip", "china_ip"],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "rule_set": ["geosite-cn", "geoip-cn"],
+        "outbound": "🎯 全球直连"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "reject_non_ip_no_drop",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/reject-no-drop.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "reject_non_ip_drop",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/reject-drop.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "reject_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/reject.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "reject_domainset",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/domainset/reject.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "reject_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/ip/reject.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "cdn_domainset",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/domainset/cdn.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "cdn_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/cdn.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "stream_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/stream.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "stream_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/ip/stream.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "ai_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/ai.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "apple_cdn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/domainset/apple_cdn.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "apple_services",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/apple_services.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "apple_cn_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/apple_cn.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "microsoft_cdn_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/microsoft_cdn.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "microsoft_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/microsoft.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "download_domainset",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/domainset/download.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "download_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/download.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "lan_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/lan.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "lan_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/ip/lan.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "domestic_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/domestic.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "direct_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/direct.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "global_non_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/non_ip/global.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "domestic_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/ip/domestic.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "china_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/yyhhyyyyyy/sing-box-ruleset/raw/main/ip/china_ip.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "geoip-bilibili",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo-lite/geoip/bilibili.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "geosite-bilibili",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/bilibili.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "geolocation-!cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/geolocation-!cn.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "geoip-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geoip/cn.srs",
+        "download_detour": "🚀 节点选择"
+      },
+      {
+        "tag": "geosite-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/cn.srs",
+        "download_detour": "🚀 节点选择"
+      }
+    ],
+    "auto_detect_interface": true,
+    "final": "🐟 漏网之鱼"
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "store_rdrc": true
+    },
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "external_ui": "ui",
+      "external_ui_download_url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
+      "external_ui_download_detour": "direct-out",
+      "default_mode": "rule"
+    }
+  }
+}
